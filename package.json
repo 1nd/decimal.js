@@ -1,7 +1,7 @@
 {
-  "name": "decimal.js",
+  "name": "@1nd/decimal.js",
   "description": "An arbitrary-precision Decimal type for JavaScript.",
-  "version": "10.2.1",
+  "version": "11.0.0-beta.1",
   "keywords": [
     "arbitrary",
     "precision",
@@ -16,12 +16,18 @@
     "bigint",
     "bignum"
   ],
-  "repository" : {
+  "repository": {
     "type": "git",
-    "url": "https://github.com/MikeMcl/decimal.js.git"
+    "url": "https://github.com/@1nd/decimal.js.git"
   },
+  "files": [
+    "decimal.js",
+    "decimal.min.js",
+    "decimal.min.js.map",
+    "decimal.d.ts",
+    "decimal.global.d.ts"
+  ],
   "main": "decimal",
-  "module": "decimal.mjs",
   "browser": "decimal.js",
   "author": {
     "name": "Michael Mclaughlin",
@@ -30,7 +36,11 @@
   "license": "MIT",
   "scripts": {
     "test": "node ./test/test.js",
-    "build": "uglifyjs decimal.js --source-map url=decimal.min.js.map -c -m -o decimal.min.js"
+    "build": "uglifyjs decimal.js --source-map url=decimal.min.js.map -c -m -o decimal.min.js",
+    "prepublishOnly": "pnpm run build && pnpm test"
+  },
+  "devDependencies": {
+    "uglify-js": "^3.12.4"
   },
   "types": "decimal.d.ts"
 }
